@@ -6,8 +6,7 @@ function Footer() {
         <div className='footer-container'>
 
             <div className='text-footer'>
-                Developed By <h5>Tejaswini Ugale,Tejaswini Khedkar
-                    ,Namita Sarate,Varsha Yadav</h5>
+                Developed By XYZ
 
             </div>
             <div>

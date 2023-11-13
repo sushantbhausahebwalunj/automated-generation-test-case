@@ -4,6 +4,7 @@ import './index.css';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import Home from './views/Home/Home';
+import TestCase from './views/TestCase/TestCase';
 
  
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup />
+  },
+  {
+    path: '/testCase',
+    element: <TestCase/>
   },
 ])
 

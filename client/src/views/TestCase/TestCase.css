@@ -1,0 +1,48 @@
+/* TestCaseForm.css */
+
+.test-case-form {
+  max-width: 400px; /* Decrease max-width for a smaller form */
+  margin: auto;
+  padding: 20px; /* Decrease padding for less space inside the form */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Decrease border-radius for less rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Decrease box-shadow for a lighter shadow effect */
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px; /* Decrease margin for less space between form groups */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px; /* Decrease margin for less space between labels */
+}
+
+textarea {
+  width: 100%;
+  padding: 8px; /* Decrease padding for smaller text areas */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px; /* Decrease border-radius for less rounded corners */
+  resize: vertical; /* Allow vertical resizing of the textarea */
+}
+
+button.generate-btn {
+  display: block;
+  width: 100%;
+  padding: 10px; /* Decrease padding for a smaller button */
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px; /* Decrease border-radius for less rounded corners */
+  cursor: pointer;
+  font-size: 16px; /* Decrease font size for a smaller button text */
+}
+
+button.generate-btn:hover {
+  background-color: #45a049;
+}

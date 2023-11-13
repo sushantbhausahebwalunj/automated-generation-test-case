@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css';
-// import Navbar from '../../components/Navbar/Navbar';
-// import Footer from '../../components/Footer/Footer';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -27,9 +27,9 @@ const SignUpForm = () => {
 
   return (
     <>
-    {/* <Navbar /> */}
+    <Navbar />
     <div className="signup-form">
-      <h2>Sign Up</h2>
+      <h2 className='form-title'>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -78,7 +78,7 @@ const SignUpForm = () => {
         <button type="button" className='signup-btn'>Sign Up</button>
       </form>
     </div>
-    {/* <Footer /> */}
+    <Footer />
     </>
   );
 };
