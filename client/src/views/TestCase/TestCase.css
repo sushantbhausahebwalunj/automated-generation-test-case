@@ -1,12 +1,12 @@
-/* TestCaseForm.css */
-
 .test-case-form {
-  max-width: 400px; /* Decrease max-width for a smaller form */
-  margin: auto;
-  padding: 20px; /* Decrease padding for less space inside the form */
+  max-width: 400px; 
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  padding: 20px; 
   border: 1px solid #ccc;
-  border-radius: 5px; /* Decrease border-radius for less rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Decrease box-shadow for a lighter shadow effect */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 h2 {
@@ -14,33 +14,32 @@ h2 {
 }
 
 .form-group {
-  margin-bottom: 15px; /* Decrease margin for less space between form groups */
+  margin-bottom: 15px; 
 }
 
 label {
-  display: block;
-  margin-bottom: 5px; /* Decrease margin for less space between labels */
+  display: block; 
 }
 
 textarea {
   width: 100%;
-  padding: 8px; /* Decrease padding for smaller text areas */
+  padding: 8px; 
   box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 3px; /* Decrease border-radius for less rounded corners */
-  resize: vertical; /* Allow vertical resizing of the textarea */
+  border-radius: 3px;
+  resize: vertical; 
 }
 
 button.generate-btn {
   display: block;
   width: 100%;
-  padding: 10px; /* Decrease padding for a smaller button */
+  padding: 10px; 
   background-color: #4caf50;
   color: #fff;
   border: none;
-  border-radius: 5px; /* Decrease border-radius for less rounded corners */
+  border-radius: 5px; 
   cursor: pointer;
-  font-size: 16px; /* Decrease font size for a smaller button text */
+  font-size: 16px;
 }
 
 button.generate-btn:hover {

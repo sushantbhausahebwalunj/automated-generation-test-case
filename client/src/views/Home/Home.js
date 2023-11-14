@@ -1,0 +1,64 @@
+import React from 'react';
+import './Home.css';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+
+function Home() {
+  return (
+    <>
+    <Navbar />
+    <div className="home">
+      <header>
+        <h1  className='title'>Welcome to Automated Test Case Generation</h1>
+        <p>Your one-stop solution for automated test case creation.</p>
+      </header>
+
+      <section className="feature">
+        <h2>Key Features</h2>
+        <div className="feature-cards">
+          <div className="feature-card">
+            <h3>Automated Test Case Generation</h3>
+            <p>Effortlessly generate test cases with our automated system.</p>
+          </div>
+
+          <div className="feature-card">
+            <h3>Intuitive User Interface</h3>
+            <p>User-friendly interface for a seamless test case creation experience.</p>
+          </div>
+
+          <div className="feature-card">
+            <h3>Customizable Test Parameters</h3>
+            <p>Tailor test cases to your needs by adjusting various parameters.</p>
+          </div>
+
+          <div className="feature-card">
+            <h3>Integration with Testing Frameworks</h3>
+            <p>Seamlessly integrate generated test cases with popular testing frameworks.</p>
+          </div>
+
+          <div className="feature-card">
+            <h3>Real-time Collaboration</h3>
+            <p>Collaborate with team members in real-time for efficient testing.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="about">
+        <h2>About Us</h2>
+        <p>
+          We are dedicated to simplifying the test case generation process. Our platform empowers
+          developers and testers to create comprehensive test suites with ease.
+        </p>
+      </section>
+
+      <section className="get-started">
+        <h2>Get Started</h2>
+        <p>Start using our Automated Test Case Generation tool today and enhance your testing process.</p>
+      </section>
+    </div>
+    <Footer />
+    </>
+  );
+}
+
+export default Home;
