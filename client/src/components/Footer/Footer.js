@@ -6,7 +6,7 @@ function Footer() {
         <div className='footer-container'>
 
             <div className='text-footer'>
-                Developed By XYZ
+                Developed By 
 
             </div>
             <div>

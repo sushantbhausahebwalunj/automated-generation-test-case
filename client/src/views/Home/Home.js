@@ -13,9 +13,11 @@ function Home() {
         <p>Your one-stop solution for automated test case creation.</p>
       </header>
 
-      <section className="feature">
+      <div className="main-card">
         <h2>Key Features</h2>
-        <div className="feature-cards">
+
+        <div className="main-feature-cards">
+
           <div className="feature-card">
             <h3>Automated Test Case Generation</h3>
             <p>Effortlessly generate test cases with our automated system.</p>
@@ -41,7 +43,7 @@ function Home() {
             <p>Collaborate with team members in real-time for efficient testing.</p>
           </div>
         </div>
-      </section>
+      </div>
 
       <section className="about">
         <h2>About Us</h2>

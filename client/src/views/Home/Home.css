@@ -1,6 +1,5 @@
 /* Home.css */
 .home {
-    max-width: 800px;
     margin: 0 auto;
     text-align: center;
     padding: 50px;
@@ -18,7 +17,7 @@
     color: #666;
   }
   
-  .feature {
+  .main-card {
     margin-bottom: 40px;
   }
   
@@ -26,16 +25,16 @@
     color:#4caf50;
   }
   
-  .feature-cards {
+  .main-feature-cards {
     display: flex;
-    justify-content: space-around; /* Adjust as needed */
+    justify-content: space-between;
     flex-wrap: wrap;
   }
   
   .feature-card {
-    flex: 0 1 45%; /* Adjust as needed */
     padding: 20px;
     margin: 10px;
+    width: 150px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -61,6 +60,6 @@
   }
   
   .title{
-    margin-top: 40px;
+    margin-top: 10px;
   }
   
