@@ -68,7 +68,7 @@ function Signup() {
           <input type="text"
             placeholder="Enter your name"
             id="name"
-            className="form-group"
+            className="form-control"
             value={name}
             onChange={(e) => {
               setName(e.target.value);
