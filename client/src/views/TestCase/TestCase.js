@@ -1,80 +1,123 @@
 import React, { useState } from 'react';
 import './TestCase.css';
 import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
+
+import axios from "axios";
+
 
 const TestCaseForm = () => {
   const [formData, setFormData] = useState({
     code: '',
     specifications: '',
-    instructions: '',
+    testCases: '',
+    isLoading: false
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const generateTestCases = async () => {
+    if (!formData.code) {
+      alert('Code cannot be empty....')
+      return;
+    }
+
+    if (!formData.specifications) {
+      alert('Specifications cannot be empty ...')
+      return;
+    }
+
     setFormData({
       ...formData,
-      [name]: value,
-    });
-  };
+      isLoading: true
+    })
+    try {
+      const { data } = await axios.post('https://api.openai.com/v1/chat/completions', {
+        "model": "gpt-3.5-turbo",
+        "messages": [{ "role": "user", "content": `Specifications: ${formData.specifications} \n Code: ${formData.code} Please create a test cases for above code by followiing specifications, test cases should simple and point wise, also suggest some instructions for tester` }],
+        "temperature": 0.7
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.REACT_APP_API_KEY}`
+        }
+      })
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your test case generation logic here, such as sending data to a server
-    console.log('Form data submitted:', formData);
-    // Reset the form after submission
-    setFormData({
-      code: '',
-      specifications: '',
-      instructions: '',
-    });
-  };
+
+      const { choices } = data
+      const testCases = choices.length > 0 ? choices[0]?.message.content : `Not able to generate test cases, try again`
+      
+      setFormData({
+        ...formData,
+        testCases: testCases
+      })
+    } catch (error) {
+      setFormData({
+        ...formData,
+        isLoading: false
+      })
+    }
+  }
 
   return (
     <>
-    <Navbar />
-    <div className="test-case-form">
-      <h2>Generate Test Case</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="code">Code:</label>
-          <textarea
-            id="code"
-            name="code"
-            value={formData.code}
-            onChange={handleChange}
-            rows="5"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="specifications">Specifications:</label>
-          <textarea
-            id="specifications"
-            name="specifications"
-            value={formData.specifications}
-            onChange={handleChange}
-            rows="5"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="instructions">Instructions:</label>
-          <textarea
-            id="instructions"
-            name="instructions"
-            value={formData.instructions}
-            onChange={handleChange}
-            rows="5"
-            required
-          />
-        </div>
-        <button type="submit" className="generate-btn">
-          Generate Test Case
-        </button>
-      </form>
-    </div>
-    <Footer />
+      <Navbar />
+      <div className="test-case-form">
+        <h2>Generate Test Case</h2>
+        <form>
+          <div className="form-group">
+            <label htmlFor="code">Code:</label>
+            <textarea
+              id="code"
+              name="code"
+              value={formData.code}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  code: e.target.value
+                })
+              }}
+              rows="5"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="specifications">Specifications:</label>
+            <textarea
+              id="specifications"
+              name="specifications"
+              value={formData.specifications}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  specifications: e.target.value
+                })
+              }}
+              rows="5"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="testCases">
+              Test Cases: {formData.isLoading ? "Please wait..." : ""}
+            </label>
+            <textarea
+              id="testCases"
+              name="testCases"
+              value={formData.testCases}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  testCases: e.target.value
+                })
+              }}
+              rows="10"
+              required
+            />
+          </div>
+          <button type="button" className="generate-btn" onClick={generateTestCases}>
+            Generate Test Case
+          </button>
+        </form>
+      </div>
+
     </>
   );
 };
