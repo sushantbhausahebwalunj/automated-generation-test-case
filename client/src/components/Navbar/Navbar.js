@@ -10,7 +10,6 @@ function Navbar() {
           <ul className="nav-links ">
             <li><a href="/signup">Signup</a></li>
             <li><a href="/login">Login</a></li>
-            <li><a href="/testCase">Test Case</a></li>
           </ul>
         </div>
       </div>

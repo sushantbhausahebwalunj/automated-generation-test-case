@@ -27,7 +27,7 @@ function Login() {
 
     if(storageUser?.email){
       alert("You are already logged in!");
-      window.location.href = "/";
+      window.location.href = "/testCase";
     }
 
   }, [])
