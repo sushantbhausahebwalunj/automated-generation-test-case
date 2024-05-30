@@ -2,8 +2,11 @@ import React from 'react';
 import './Home.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 function Home() {
+  const location=useLocation()
   return (
     <>
     <Navbar />
@@ -19,7 +22,7 @@ function Home() {
         <div className="main-feature-cards">
 
           <div className="feature-card">
-            <h3>Automated Test Case Generation</h3>
+            <Link to="/test-case"style={{textDecoration:" none"}} ><h3>Automated Test Case Generation</h3></Link>
             <p>Effortlessly generate test cases with our automated system.</p>
           </div>
 

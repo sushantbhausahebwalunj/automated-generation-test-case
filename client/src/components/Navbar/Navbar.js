@@ -9,7 +9,7 @@ function Navbar() {
           <a className="navbar-brand" href="/">Automated generation Test Case</a>
           <ul className="nav-links ">
             <li><a href="/signup">Signup</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/">Login</a></li>
           </ul>
         </div>
       </div>

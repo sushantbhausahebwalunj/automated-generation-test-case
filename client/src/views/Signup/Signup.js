@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,  } from 'react';
 import axios from 'axios';
 import "./Signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 
@@ -11,51 +12,85 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
+  const history = useNavigate()
 
-  const signup = async () => {
-    if(!name){
-      alert("Name is required");
-      return;
+
+  const signup = async (e) => {
+
+    e.preventDefault()
+    try{
+      await axios.post("http://localhost:5000/signup", {
+        name,email,password,mobile
+      })
+      .then(res=>{
+        if(res.data==="exist"){
+            alert("user already exist")
+
+        }
+        else if(res.data==="notexist"){
+          history("/home")
+        }
+      })
+      .catch(e=>{
+        alert("worng credentials")
+        console.log(e)
+      })
+    }
+    catch(e){
+      console.log(e)
     }
 
-    if(!email){
-      alert("Email is required");
-      return;
-    }
+  }
 
-    if(!password){
-      alert("Password is required");
-      return;
-    }
 
-    if(!mobile){
-      alert("Mobile is required");
-      return;
-    }
 
-    const response = await axios.post("/signup", {
-      name: name,
-      email: email,
-      password: password,
-      mobile: mobile,
-    })
 
-    alert(response?.data?.message);
 
-    if(response?.data?.success){
-      window.location.href = "/login";
-    }
-  };
 
-  useEffect(()=>{
-    const storageUser = JSON.parse(localStorage.getItem("user") || '{}');
 
-    if(storageUser?.email){
-      alert("You are already logged in!");
-      window.location.href = "/";
-    }
+  //   if(!name){
+  //     alert("Name is required");
+  //     return;
+  //   }
 
-  }, [])
+  //   if(!email){
+  //     alert("Email is required");
+  //     return;
+  //   }
+
+  //   if(!password){
+  //     alert("Password is required");
+  //     return;
+  //   }
+
+  //   if(!mobile){
+  //     alert("Mobile is required");
+  //     return;
+  //   }
+
+  //   const response = await axios.post("/signup", {
+  //     name: name,
+  //     email: email,
+  //     password: password,
+  //     mobile: mobile,
+  //   })
+
+  //   alert(response?.data?.message);
+
+  //   if(response?.data?.success){
+  //     window.location.href = "/login";
+  //   }
+  // };
+
+  // useEffect(()=>{
+  //   const storageUser = JSON.parse(localStorage.getItem("user") || '{}');
+
+  //   if(storageUser?.email){
+  //     alert("You are already logged in!");
+  //     window.location.href = "/";
+  //   }
+
+  // }, [])
 
   return (
     <div>
@@ -119,7 +154,7 @@ function Signup() {
         </button>
 
         <p className="text-right">
-          <Link to="/login">Already have an account?</Link>
+          <Link to="/">Already have an account?</Link>
         </p>
       </form>
       <Footer />

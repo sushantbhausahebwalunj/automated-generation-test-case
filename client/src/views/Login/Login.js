@@ -1,41 +1,62 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from '../../components/Navbar/Navbar';
 
 function Login() {
+  const history = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const login = async () =>{
-    const response = await axios.post("/login", {
-      email: email,
-      password: password
-    });
-
-    alert(response?.data?.message);
-
-    if(response?.data?.success){
-      localStorage.setItem("user", JSON.stringify(response?.data?.data));
-      window.location.href = "/testCase";
+  const login = async (e) =>{
+    e.preventDefault()
+    try{
+      await axios.post("http://localhost:5000/", {
+        email,password
+      })
+      .then(res=>{
+        if(res.data==="exist"){
+            history("/home")
+        }
+        else if(res.data==="notexist"){
+          alert("user have not registered")
+        }
+      })
+      .catch(e=>{
+        alert("worng credentials")
+        console.log(e)
+      })
     }
+    catch(e){
+      console.log(e)
+    }
+
   }
 
-  useEffect(()=>{
-    const storageUser = JSON.parse(localStorage.getItem("user") || '{}');
 
-    if(storageUser?.email){
-      alert("You are already logged in!");
-      window.location.href = "/testCase";
-    }
+  //   alert(response?.data?.message);
 
-  }, [])
+  //   if(response?.data?.success){
+  //     localStorage.setItem("user", JSON.stringify(response?.data?.data));
+  //     window.location.href = "/testCase";
+  //   }
+  // }
+
+  // useEffect(()=>{
+  //   const storageUser = JSON.parse(localStorage.getItem("user") || '{}');
+
+  //   if(storageUser?.email){
+  //     alert("You are already logged in!");
+  //     window.location.href = "/testCase";
+  //   }
+
+  // }, [])
 
   return (
     <div>
       <Navbar />
-      <form className="login-form">
+      <form className="login-form" action='POST'>
         <h1 className='text-center'>Login</h1>
 
         <div>
